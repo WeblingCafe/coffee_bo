@@ -95,14 +95,36 @@ const GlobalStyle = createGlobalStyle`
         cursor: pointer;
     };
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        margin: 0;
-    }
+    h1 {
+  font-size: 3rem;
+
+}
+
+h2 {
+  font-size: 2rem;
+
+}
+
+h3 {
+  font-size: 1.5rem;
+
+}
+
+h4 {
+  font-size: 1.2rem;
+  
+}
+
+h5 {
+  font-size: 1.1rem;
+
+  
+}
+h6 {
+  font-size: 1rem;
+
+  
+}
 
     ol,
     ul {
