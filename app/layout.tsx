@@ -1,11 +1,15 @@
-import StyledComponentsRegistry from "../lib/registry";
+import StyledComponentsRegistry from "lib/registry"
+
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     return (
         <html>
+            <StyledComponentsRegistry>
           <body>
-            <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+                {children}
+        
           </body>
+          </StyledComponentsRegistry>
         </html>
       )
 }
