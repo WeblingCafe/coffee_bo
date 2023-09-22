@@ -1,33 +1,33 @@
-import { useState } from 'react'
+import { useState } from "react";
 import {
   HamburgerMenuIcon,
   DotFilledIcon,
   CheckIcon,
   ChevronRightIcon,
-} from '@radix-ui/react-icons'
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+} from "@radix-ui/react-icons";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 
 function RightSlot({ children }) {
   return (
     <div className="ml-auto pl-4 text-gray-500 group-hover:text-gray-200">
       {children}
     </div>
-  )
-}
+  );
+};
 
 function DropdownMenuItem({ children, ...props }) {
   return (
     <DropdownMenu.Item
       {...props}
       className={
-        'group bg-white hover:bg-gray-700 hover:text-gray-200 text-xs rounded flex items-center h-6 px-1 pl-6 relative select-none' +
-        (props.disabled ? ' text-gray-500' : '')
+        "group bg-white hover:bg-gray-700 hover:text-gray-200 text-xs rounded flex items-center h-6 px-1 pl-6 relative select-none" +
+        (props.disabled ? " text-gray-500" : "")
       }
     >
       {children}
     </DropdownMenu.Item>
-  )
-}
+  );
+};
 
 function DropdownMenuCheckboxItem({ children, ...props }) {
   return (
@@ -37,8 +37,8 @@ function DropdownMenuCheckboxItem({ children, ...props }) {
     >
       {children}
     </DropdownMenu.CheckboxItem>
-  )
-}
+  );
+};
 
 function DropdownMenuItemIndicator({ children, ...props }) {
   return (
@@ -52,15 +52,15 @@ function DropdownMenuItemIndicator({ children, ...props }) {
 }
 
 function Separator() {
-  return <DropdownMenu.Separator className="h-[1px] bg-gray-300 m-1" />
+  return <DropdownMenu.Separator className="h-[1px] bg-gray-300 m-1" />;
 }
 
 function DropdownMenuRadioItem({
   children,
   ...props
 }: {
-  children: React.ReactNode
-  value: string
+  children: React.ReactNode;
+  value: string;
 }) {
   return (
     <DropdownMenu.RadioItem
@@ -69,13 +69,13 @@ function DropdownMenuRadioItem({
     >
       {children}
     </DropdownMenu.RadioItem>
-  )
-}
+  );
+};
 
 export default function Home() {
-  const [bookmarksChecked, setBookmarksChecked] = useState(true)
-  const [urlsChecked, setUrlsChecked] = useState(false)
-  const [person, setPerson] = useState('pedro')
+  const [bookmarksChecked, setBookmarksChecked] = useState(true);
+  const [urlsChecked, setUrlsChecked] = useState(false);
+  const [person, setPerson] = useState("pedro");
   return (
     <div className="h-screen w-full flex flex-col space-y-4 items-center justify-center bg-gradient-to-r from-cyan-500 to-blue-500">
       <h1 className="text-6xl text-white font-semibold">
@@ -171,5 +171,5 @@ export default function Home() {
         </DropdownMenu.Content>
       </DropdownMenu.Root>
     </div>
-  )
-}
+  );
+};
