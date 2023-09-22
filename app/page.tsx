@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Container = styled.div`
   display: grid;
@@ -44,22 +44,21 @@ const SkeletonLineTwo = styled.div`
   background-color: rgb(63 63 70 / 1);
 `;
 
-
-const Skeleton = () => (
-  <SkeletonInner>
-    <SkeletonImg />
-    <SkeletonBtn />
-    <SkeletonLineOne />
-    <SkeletonLineTwo />
-  </SkeletonInner>
-);
+function Skeleton() {
+  return (
+    <SkeletonInner>
+      <SkeletonImg />
+      <SkeletonBtn />
+      <SkeletonLineOne />
+      <SkeletonLineTwo />
+    </SkeletonInner>
+  );
+}
 
 export default function Page() {
   return (
     <div>
-      <h1 >
-        Styled with Styled Components
-      </h1>
+      <h1>Styled with Styled Components</h1>
       <Container>
         <Skeleton />
         <Skeleton />
