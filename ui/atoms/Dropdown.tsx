@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import Image from "next/image";
@@ -37,34 +37,36 @@ const customStyles: StylesConfig<Option, false> = {
   }),
 };
 
-const Dropdown = ({ name, label, options, control }: SelectBoxProps) => (
-  <div>
-    {/* <label>{label}</label> */}
-    <Controller
-      name={name}
-      control={control}
-      render={({ field }) => (
-        <Select
-          {...field}
-          options={options}
-          styles={customStyles}
-          value={options.find((option) => option.value === field.value)}
-          onChange={(selectedOption) => field.onChange(selectedOption?.value)}
-          components={{
-            DropdownIndicator: () => (
-              <Image
-                alt="drop_down_arrow"
-                width={18}
-                height={18}
-                src="/icons/arrow_down_icon.svg"
-              />
-            ),
-          }}
-        />
-      )}
-      rules={{ required: true }}
-    />
-  </div>
-);
+function Dropdown({ name, options, control }: SelectBoxProps) {
+  return (
+    <div>
+      <Controller
+        name={name}
+        control={control}
+        render={({ field }) => (
+          <Select
+            {...field}
+            options={options}
+            styles={customStyles}
+            value={options.find((option) => option.value === field.value)}
+            onChange={(selectedOption) => field.onChange(selectedOption?.value)}
+            components={{
+              // eslint-disable-next-line react/no-unstable-nested-components
+              DropdownIndicator: () => (
+                <Image
+                  alt="drop_down_arrow"
+                  width={18}
+                  height={18}
+                  src="/icons/arrow_down_icon.svg"
+                />
+              ),
+            }}
+          />
+        )}
+        rules={{ required: true }}
+      />
+    </div>
+  );
+}
 
 export default Dropdown;
