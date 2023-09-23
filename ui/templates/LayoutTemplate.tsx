@@ -7,6 +7,7 @@ interface LayoutTemplateProps {
 
 const LayoutTemplateWrapper = styled.div`
   display: flex;
+  height: 100%;
 `;
 
 const ChildWrapper = styled.div`
