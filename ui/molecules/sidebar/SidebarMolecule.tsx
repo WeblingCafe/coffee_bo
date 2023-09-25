@@ -23,11 +23,11 @@ const SidebarMoleculeWrapper = styled.div`
   padding: 0 8px;
 `;
 
-const TextWrapper = styled(Link)<{ isFocus?: boolean }>`
+const TextWrapper = styled(Link)<{ isfocus?: boolean }>`
   padding: 12px;
 
-  ${({ isFocus }) =>
-    isFocus &&
+  ${({ isfocus }) =>
+    isfocus &&
     css`
       background-color: ${({ theme }) => theme.color.gray};
     `}
@@ -47,12 +47,12 @@ export default function SidebarMolecule({
         </TextWrapper>
       )}
       {content1 && (
-        <TextWrapper href={content1.link} isFocus={content1.link === pathname}>
+        <TextWrapper href={content1.link} isfocus={content1.link === pathname}>
           <Text color={content1.color}>{content1.content}</Text>
         </TextWrapper>
       )}
       {content2 && (
-        <TextWrapper href={content2.link} isFocus={content2.link === pathname}>
+        <TextWrapper href={content2.link} isfocus={content2.link === pathname}>
           <Text color={content2.color}>{content2.content}</Text>
         </TextWrapper>
       )}
