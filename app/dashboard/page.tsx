@@ -1,7 +1,7 @@
 "use client";
 
 import Input from "ui/atoms/Input";
-import RegistrationForm from "ui/organism/RegisterForm";
+import RegistrationForm from "ui/organism/signin/LoginForm";
 import { DropdownMolecule } from "ui/molecules/DropdownMolecule";
 
 export default function Dashboard() {

@@ -4,10 +4,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import FormInput from "ui/molecules/FormInput";
 
-interface FormData {
-  firstName: string;
-  lastName: string;
+interface SignupData {
   email: string;
+  username: string;
+  nickname: string;
+  password: string;
+  birthDate: string;
 }
 
 export const emailPattern = {
@@ -16,17 +18,16 @@ export const emailPattern = {
 };
 
 // eslint-disable-next-line react/function-component-definition
-const RegistrationForm: React.FC = () => {
+const SignupForm: React.FC = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = (data: SignupData) => {
     console.log(data, errors);
   };
-  console.log("error1", errors);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -43,4 +44,4 @@ const RegistrationForm: React.FC = () => {
   );
 };
 
-export default RegistrationForm;
+export default SignupForm;

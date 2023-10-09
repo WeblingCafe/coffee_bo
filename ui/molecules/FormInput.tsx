@@ -7,16 +7,29 @@ import { BoxTypeProps } from "types/theme";
 import { ErrorMessage } from "@hookform/error-message";
 import { FormErrorMessage } from "ui/atoms/FormErrorMessage";
 
-interface InputProps extends InputStyleProps {
-  name: string;
-  label: string;
-  register: UseFormRegister<any>;
-  errors: any;
+export interface PatternProps {
+  value: string;
+  message: string;
 }
 
 export interface InputStyleProps extends BoxTypeProps {
   styleType?: "normal" | "search";
 }
+interface InputProps extends InputStyleProps {
+  name: string;
+  pattern?: PatternProps;
+  placeholder: string;
+  type: string;
+  label: string;
+  register: UseFormRegister<any>;
+  errors: any;
+}
+
+const FormInputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
 
 const InputWrapper = styled.input<InputProps>`
   width: ${({ theme, width }) => theme.box.width[width]};
@@ -40,6 +53,9 @@ const InputWrapper = styled.input<InputProps>`
 
 const FormInput: React.FC<InputProps> = ({
   name,
+  type = "text",
+  placeholder,
+  pattern,
   label,
   register,
   errors,
@@ -48,13 +64,15 @@ const FormInput: React.FC<InputProps> = ({
   height = "md",
 }) => {
   return (
-    <div>
+    <FormInputWrapper>
       <label htmlFor={name}>{label}</label>
       <InputWrapper
+        type={type}
+        placeholder={placeholder}
         id={name}
         {...register(name, {
-          // 해당 내용 props로 만들어주기
-          required: "This is required.",
+          pattern: pattern,
+          required: "입력해주세요.",
         })}
         styleType={styleType}
         width={width}
@@ -65,7 +83,7 @@ const FormInput: React.FC<InputProps> = ({
         name={name}
         render={({ message }) => <FormErrorMessage>{message}</FormErrorMessage>}
       />
-    </div>
+    </FormInputWrapper>
   );
 };
 
