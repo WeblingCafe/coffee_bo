@@ -43,7 +43,6 @@ const LoginForm: React.FC = () => {
     formState: { errors },
   } = useForm<FormData>();
   const { user } = useSession();
-  
 
   const onSubmit = async (data: FormData) => {
     console.log(data, errors);
@@ -57,8 +56,6 @@ const LoginForm: React.FC = () => {
     });
   };
 
-
-
   return (
     <LoginFormWrapper onSubmit={handleSubmit(onSubmit)}>
       <FormInput
@@ -66,7 +63,6 @@ const LoginForm: React.FC = () => {
         required
         register={register}
         pattern={emailPattern}
-        rules={{ required: "@snaps.com을 붙여주세요" }}
         errors={errors}
         placeholder="이메일"
         width="xl"
@@ -81,7 +77,6 @@ const LoginForm: React.FC = () => {
         width="xl"
       />
       <LoginButton type="submit">로그인</LoginButton>
-
     </LoginFormWrapper>
   );
 };

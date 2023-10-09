@@ -18,6 +18,7 @@ export interface InputStyleProps extends BoxTypeProps {
 interface InputProps extends InputStyleProps {
   name: string;
   pattern?: PatternProps;
+  required?: string;
   placeholder: string;
   type: string;
   label: string;
@@ -56,6 +57,7 @@ const FormInput: React.FC<InputProps> = ({
   type = "text",
   placeholder,
   pattern,
+  required = "입력해주세요",
   label,
   register,
   errors,
@@ -72,7 +74,7 @@ const FormInput: React.FC<InputProps> = ({
         id={name}
         {...register(name, {
           pattern: pattern,
-          required: "입력해주세요.",
+          required: required,
         })}
         styleType={styleType}
         width={width}
