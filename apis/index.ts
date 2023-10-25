@@ -8,7 +8,7 @@ export interface ServerResponse<T> {
 }
 
 export const axiosClient = axios.create({
-  baseURL: `${process.env.API_HOST}/`,
+  baseURL: `${process.env.NEXT_PUBLIC_API_BASE_URL}/`,
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",

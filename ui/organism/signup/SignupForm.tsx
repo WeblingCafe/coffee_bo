@@ -10,13 +10,16 @@ import styled from "styled-components";
 import FormInput from "ui/molecules/FormInput";
 import * as yup from "yup";
 
-export interface SignupData {
+export interface SignupData extends PwdConfirmProps {
   email: string;
   username: string;
   nickname: string;
   password: string;
-  passwordConfirm: string;
   birthDate: string;
+}
+
+interface PwdConfirmProps {
+  passwordConfirm?: string;
 }
 
 const SignupButton = styled.button`

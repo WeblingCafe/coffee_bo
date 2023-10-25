@@ -53,11 +53,9 @@ const LoginForm: React.FC = () => {
       email: data.email,
       password: data.password,
       redirect: false,
-      // callbackUrl: "/",
     });
     if (result.error) {
       toast.error(result.error);
-      // return;
     } else {
       router.push("/");
     }
