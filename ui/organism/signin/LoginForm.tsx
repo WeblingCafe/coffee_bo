@@ -1,12 +1,13 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import FormInput from "ui/molecules/FormInput";
 import { signIn, useSession } from "next-auth/react";
 import Button from "ui/atoms/Button";
-import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 interface FormData {
   email: string;
@@ -43,17 +44,23 @@ const LoginForm: React.FC = () => {
     formState: { errors },
   } = useForm<FormData>();
   const { user } = useSession();
+  const router = useRouter();
 
   const onSubmit = async (data: FormData) => {
-    console.log(data, errors);
     if (user) return;
 
     const result = await signIn("credentials", {
       email: data.email,
       password: data.password,
-      redirect: true,
-      callbackUrl: "/",
+      redirect: false,
+      // callbackUrl: "/",
     });
+    if (result.error) {
+      toast.error(result.error);
+      // return;
+    } else {
+      router.push("/");
+    }
   };
 
   return (

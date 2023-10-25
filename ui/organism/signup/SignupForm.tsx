@@ -1,15 +1,16 @@
 "use client";
 
 import React from "react";
-import { useMutation } from "react-query";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-
+import { useMutation } from "@tanstack/react-query";
+import useSignupMutation from "hooks/useSignupMutation";
 import styled from "styled-components";
 import FormInput from "ui/molecules/FormInput";
 import * as yup from "yup";
 
-interface SignupData {
+export interface SignupData {
   email: string;
   username: string;
   nickname: string;
@@ -29,6 +30,8 @@ const SignupButton = styled.button`
 
 // eslint-disable-next-line react/function-component-definition
 const SignupForm: React.FC = () => {
+  const { isLoading, mutate: signupMuate, isSuccess } = useSignupMutation();
+
   const formSchema = yup.object({
     email: yup
       .string()
@@ -64,6 +67,10 @@ const SignupForm: React.FC = () => {
 
   const onSubmit = (data: SignupData) => {
     console.log(data, errors);
+    signupMuate(data);
+    if (isLoading) {
+      console.log("로딩중 모달 띄우기");
+    }
   };
 
   return (

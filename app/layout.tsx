@@ -7,6 +7,7 @@ import { SessionProvider } from "next-auth/react";
 import { theme } from "styles/theme";
 import ReactQueryProvider from "components/ReactQueryProvider";
 import LayoutTemplate from "ui/templates/LayoutTemplate";
+import { Toaster } from "react-hot-toast";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -18,6 +19,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <SessionProvider>
               <ReactQueryProvider>
                 <LayoutTemplate>{children}</LayoutTemplate>
+                <Toaster />
               </ReactQueryProvider>
             </SessionProvider>
           </body>

@@ -25,6 +25,8 @@
       "styles/*": ["styles/*"],
       "ui/*": ["ui/*"],
       "types/*": ["types/*"],
+      "apis/*": ["apis/*"],
+      "hooks/*": ["hooks/*"],
       "/": ["app/*"]
     }
   },

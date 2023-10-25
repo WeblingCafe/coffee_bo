@@ -15,31 +15,30 @@ export const authOptions: AuthOptions = {
         password: { label: "비밀번호", type: "password" },
       },
       async authorize(credentials, req) {
-        console.log("credential", credentials);
-        if (typeof credentials !== "undefined") {
-          const res = await fetch(`${process.env.API_HOST}/v1/auth/login`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              email: credentials?.email,
-              password: credentials?.password,
-            }),
-          });
-          const user = await res.json();
-          console.log("user", user);
-          if (user) {
-            return user;
-          } else {
-            return null;
-          }
-        }
-        return null;
+        if (!credentials) return;
+        const res = await fetch(`${process.env.API_HOST}/v1/auth/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: credentials?.email,
+            password: credentials?.password,
+          }),
+        });
+        const user = await res.json();
+        return user;
       },
     }),
   ],
   callbacks: {
+    async signIn({ user, credentials }) {
+      if (user?.status === 200) {
+        return true;
+      } else {
+        throw new Error(user.message);
+      }
+    },
     async jwt({ token, user }) {
       return { ...token, ...user };
     },
