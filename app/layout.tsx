@@ -5,6 +5,7 @@ import GlobalStyle from "styles/GlobalStyles";
 import { ThemeProvider } from "styled-components";
 import { SessionProvider } from "next-auth/react";
 import { theme } from "styles/theme";
+import ReactQueryProvider from "components/ReactQueryProvider";
 import LayoutTemplate from "ui/templates/LayoutTemplate";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -15,7 +16,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <ThemeProvider theme={theme}>
           <body>
             <SessionProvider>
-              <LayoutTemplate>{children}</LayoutTemplate>
+              <ReactQueryProvider>
+                <LayoutTemplate>{children}</LayoutTemplate>
+              </ReactQueryProvider>
             </SessionProvider>
           </body>
         </ThemeProvider>
