@@ -11,7 +11,7 @@ import { Toaster } from "react-hot-toast";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html>
+    <html lang="en">
       <StyledComponentsRegistry>
         <GlobalStyle />
         <ThemeProvider theme={theme}>

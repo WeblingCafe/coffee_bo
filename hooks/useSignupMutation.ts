@@ -1,8 +1,6 @@
 import { axiosClient, ServerResponse } from "apis/index";
 import { SignupData } from "ui/organism/signup/SignupForm";
 import { useMutation } from "@tanstack/react-query";
-import { signIn } from "next-auth/react";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
@@ -10,10 +8,8 @@ import { useRouter } from "next/navigation";
 const signup = async (param: SignupData) => {
   const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/v1/auth/register`;
 
-  console.log("param", param);
-  console.log("url", url);
-  const { data } = await axios.post<ServerResponse<any>>(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/v1/auth/register`,
+  const { data } = await axiosClient.post<ServerResponse<any>>(
+    "v1/auth/register",
     {
       email: param.email,
       username: param.username,
@@ -32,6 +28,7 @@ export default function useSignupMutation() {
   return useMutation({
     mutationFn: (form: SignupData) => signup(form),
     onSuccess: async (data) => {
+      toast.success("회원가입에 성공했습니다. 로그인을 해주세요.");
       router.push("/signin");
       // 성공하면 자동 로그인 후 main으로
       // const res = await signIn("credentials", {
@@ -45,9 +42,7 @@ export default function useSignupMutation() {
       // }
     },
     onError: (error: any) => {
-      console.log("signup_error", error);
-      // toast.error(error);
-      // toast.error(error.response.data.message);
+      toast.error(error.response.data.message);
     },
   });
 }

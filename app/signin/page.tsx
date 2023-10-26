@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
-import { signIn } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Text from "ui/atoms/Text";
 import LoginForm from "ui/organism/signin/LoginForm";
 import Button from "ui/atoms/Button";
@@ -23,7 +23,8 @@ const LoginBox = styled.div`
   gap: 15px;
   max-width: 452px;
   width: 100%;
-  height: 466px;
+  height: fit-content;
+  padding: 50px 0;
   box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.03);
 `;
 
@@ -32,6 +33,7 @@ export default function Login() {
   const onChangeRotuer = () => {
     router.push("/signup");
   };
+
   return (
     <LoginLayout>
       <LoginBox>

@@ -1,3 +1,5 @@
+/* eslint-disable react/function-component-definition */
+
 "use client";
 
 import React from "react";
@@ -13,6 +15,7 @@ export interface PatternProps {
 }
 
 export interface InputStyleProps extends BoxTypeProps {
+  // eslint-disable-next-line react/require-default-props
   styleType?: "normal" | "search";
 }
 interface InputProps extends InputStyleProps {

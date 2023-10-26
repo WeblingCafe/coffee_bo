@@ -22,6 +22,14 @@ interface PwdConfirmProps {
   passwordConfirm?: string;
 }
 
+const SignupWrapper = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+`;
+
 const SignupButton = styled.button`
   width: ${({ theme }) => theme.box.width.xl};
   height: ${({ theme }) => theme.box.height.xl};
@@ -69,15 +77,11 @@ const SignupForm: React.FC = () => {
   });
 
   const onSubmit = (data: SignupData) => {
-    console.log(data, errors);
     signupMuate(data);
-    if (isLoading) {
-      console.log("로딩중 모달 띄우기");
-    }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <SignupWrapper onSubmit={handleSubmit(onSubmit)}>
       <FormInput
         name="email"
         register={register}
@@ -96,7 +100,7 @@ const SignupForm: React.FC = () => {
         name="nickname"
         register={register}
         errors={errors}
-        placeholder="닉네임"
+        placeholder="회사닉네임으로 작성해주세요.(ex.bible)"
         width="xl"
       />
       <FormInput
@@ -123,7 +127,7 @@ const SignupForm: React.FC = () => {
         width="xl"
       />
       <SignupButton type="submit">회원가입</SignupButton>
-    </form>
+    </SignupWrapper>
   );
 };
 
