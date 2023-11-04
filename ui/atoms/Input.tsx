@@ -39,7 +39,7 @@ const InputWrapper = styled.input<InputProps>`
 const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
   (
     {
-      width = "lg",
+      width = "xl",
       height = "md",
       id,
       name,

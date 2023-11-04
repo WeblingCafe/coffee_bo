@@ -65,7 +65,7 @@ const FormInput: React.FC<InputProps> = ({
   register,
   errors,
   styleType = "normal",
-  width = "lg",
+  width = "xl",
   height = "md",
 }) => {
   return (

@@ -42,6 +42,10 @@ const GlobalStyle = createGlobalStyle`
         line-height: 1;
         background-size: cover;
         overflow-x: hidden;
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        user-select:none
     }
 
     menu, ol, ul {

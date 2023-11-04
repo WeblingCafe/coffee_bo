@@ -14,7 +14,7 @@ const LogoWrapper = styled.div`
 export default function Logo() {
   return (
     <LogoWrapper>
-      <Text fontSize="lg">WEBLING CAFE</Text>
+      <Text fontSize="xl">WEBLING CAFE</Text>
       <Text fontSize="xxs" color="lightGray">
         Admin
       </Text>

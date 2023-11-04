@@ -24,7 +24,7 @@ const ButtonWrapper = styled.button<ButtonStyleProps>`
 export default function Button(props: ButtonProps) {
   const {
     onClick,
-    width = "lg",
+    width = "xl",
     height = "md",
     fontWeight,
     bgColor = "blueGray",

@@ -45,8 +45,9 @@ const box = {
     xs: "62px",
     sm: "80px",
     md: "92px",
-    lg: "240px",
-    xl: "380px",
+    lg: "160px",
+    xl: "240px",
+    xxl: "380px",
   },
 };
 
