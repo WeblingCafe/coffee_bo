@@ -3,7 +3,6 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
-import { useSession } from "next-auth/react";
 import Text from "ui/atoms/Text";
 import LoginForm from "ui/organism/signin/LoginForm";
 import Button from "ui/atoms/Button";

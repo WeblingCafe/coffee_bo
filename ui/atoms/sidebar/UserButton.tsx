@@ -42,12 +42,14 @@ const UserButtonArrow = styled(Image)<{ isOpen: boolean }>`
 
 export default function UserButton({ handleClick, isOpen }: UserTextProps) {
   const { data } = useSession();
+  console.log("data", data);
   const USERNAME = data?.user?.responseObject?.username;
 
   return (
     <UserButtonWrapper onClick={handleClick}>
       <UserText>{USERNAME}님</UserText>
       <UserButtonArrow
+        alt="arrow"
         width="16"
         height="16"
         src="/icons/arrow_down_Icon.svg"

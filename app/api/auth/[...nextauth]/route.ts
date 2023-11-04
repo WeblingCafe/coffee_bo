@@ -2,7 +2,7 @@ import NextAuth from "next-auth/next";
 import type { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export const authOptions: AuthOptions = {
+const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -14,7 +14,7 @@ export const authOptions: AuthOptions = {
         },
         password: { label: "비밀번호", type: "password" },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         if (!credentials) return;
         const res = await fetch(`${process.env.API_HOST}/v1/auth/login`, {
           method: "POST",
@@ -27,24 +27,26 @@ export const authOptions: AuthOptions = {
           }),
         });
         const user = await res.json();
+
+        // eslint-disable-next-line consistent-return
         return user;
       },
     }),
   ],
   callbacks: {
-    async signIn({ user, credentials }) {
+    async signIn({ user }: any) {
       if (user?.status === 200) {
         return true;
-      } else {
-        throw new Error(user.message);
       }
+      throw new Error(user.message);
     },
     async jwt({ token, user }) {
       return { ...token, ...user };
     },
 
     async session({ session, token }) {
-      session.user = token as any;
+      // eslint-disable-next-line no-param-reassign
+      session.user = token;
       return session;
     },
   },
