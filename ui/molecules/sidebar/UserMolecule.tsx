@@ -1,7 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
-import UserText from "ui/atoms/sidebar/UserButton";
-import UserButton from "ui/atoms/sidebar/LogoutButton";
+import { signOut } from "next-auth/react";
+import UserButton from "ui/atoms/sidebar/UserButton";
+import LogoutButton from "ui/atoms/sidebar/LogoutButton";
 
 const UserMoleculeWrapper = styled.div`
   display: flex;
@@ -13,15 +14,18 @@ const UserMoleculeWrapper = styled.div`
 export default function UserMolecule() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleLogOut = () => {
+    signOut();
+  };
+
   const handleClick = () => {
-    console.log("isOpen", isOpen);
     setIsOpen(!isOpen);
   };
 
   return (
     <UserMoleculeWrapper>
-      {isOpen && <UserButton />}
-      <UserText handleClick={handleClick} isOpen={isOpen} />
+      {isOpen && <LogoutButton handleClick={handleLogOut} />}
+      <UserButton handleClick={handleClick} isOpen={isOpen} />
     </UserMoleculeWrapper>
   );
 }
