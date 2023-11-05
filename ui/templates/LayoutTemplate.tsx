@@ -23,6 +23,8 @@ export default function LayoutTemplate({ children }: LayoutTemplateProps) {
   const router = useRouter();
   const pathname = usePathname();
 
+  console.log("data", data);
+
   // REFACTOR: 로딩중일때, 로딩 UI 필요
   if (status === "loading") return null;
 
@@ -40,12 +42,9 @@ export default function LayoutTemplate({ children }: LayoutTemplateProps) {
       </LayoutTemplateWrapper>
     );
   }
-
-  if (!data) {
-    return (
-      <LayoutTemplateWrapper>
-        <ChildWrapper>{children}</ChildWrapper>
-      </LayoutTemplateWrapper>
-    );
-  }
+  return (
+    <LayoutTemplateWrapper>
+      <ChildWrapper>{children}</ChildWrapper>
+    </LayoutTemplateWrapper>
+  );
 }
