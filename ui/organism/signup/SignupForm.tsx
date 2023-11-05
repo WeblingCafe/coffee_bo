@@ -11,11 +11,11 @@ import FormInput from "ui/molecules/FormInput";
 import * as yup from "yup";
 
 export interface SignupData extends PwdConfirmProps {
-  email: string;
-  username: string;
-  nickname: string;
-  password: string;
-  birthDate: string;
+  email?: string;
+  username?: string;
+  nickname?: string;
+  password?: string;
+  birthDate?: string;
 }
 
 interface PwdConfirmProps {

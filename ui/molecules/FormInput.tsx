@@ -10,7 +10,7 @@ import { ErrorMessage } from "@hookform/error-message";
 import { FormErrorMessage } from "ui/atoms/FormErrorMessage";
 
 export interface PatternProps {
-  value: string;
+  value: RegExp;
   message: string;
 }
 
@@ -21,12 +21,12 @@ export interface InputStyleProps extends BoxTypeProps {
 interface InputProps extends InputStyleProps {
   name: string;
   pattern?: PatternProps;
-  required?: string;
+  required?: boolean | string;
   placeholder: string;
-  type: string;
-  label: string;
-  register: UseFormRegister<any>;
-  errors: any;
+  type?: string;
+  label?: string;
+  register?: UseFormRegister<any>;
+  errors?: any;
 }
 
 const FormInputWrapper = styled.div`
@@ -35,7 +35,7 @@ const FormInputWrapper = styled.div`
   gap: 5px;
 `;
 
-const InputWrapper = styled.input<InputProps>`
+const InputWrapper = styled.input<InputStyleProps>`
   width: ${({ theme, width }) => theme.box.width[width]};
   height: ${({ theme, height }) => theme.box.height[height]};
   padding: 8px;

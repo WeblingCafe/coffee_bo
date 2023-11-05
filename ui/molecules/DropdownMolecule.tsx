@@ -4,14 +4,9 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Dropdown, { Option } from "ui/atoms/Dropdown";
 
-type FormData = {
-  gender: string;
-  country: string;
-};
-
 // eslint-disable-next-line import/prefer-default-export
 export function DropdownMolecule() {
-  const { handleSubmit, control } = useForm<FormData>();
+  const { handleSubmit, control } = useForm();
 
   // 예시
   const genderOptions: Option[] = [
@@ -26,7 +21,7 @@ export function DropdownMolecule() {
     { value: "uk", label: "United Kingdom" },
   ];
 
-  const onSubmit = handleSubmit((data: FormData) => {
+  const onSubmit = handleSubmit((data) => {
     console.log(data);
   });
 

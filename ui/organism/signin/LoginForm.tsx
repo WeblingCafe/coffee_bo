@@ -43,7 +43,7 @@ const LoginForm: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
-  const { user } = useSession();
+  const { data: user } = useSession();
   const router = useRouter();
 
   const onSubmit = async (data: FormData) => {
@@ -64,6 +64,7 @@ const LoginForm: React.FC = () => {
   return (
     <LoginFormWrapper onSubmit={handleSubmit(onSubmit)}>
       <FormInput
+        type="text"
         name="email"
         required
         register={register}
