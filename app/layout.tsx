@@ -8,6 +8,8 @@ import { theme } from "styles/theme";
 import ReactQueryProvider from "components/ReactQueryProvider";
 import LayoutTemplate from "ui/templates/LayoutTemplate";
 import { Toaster } from "react-hot-toast";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -18,8 +20,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <body>
             <SessionProvider>
               <ReactQueryProvider>
+                {/* <LocalizationProvider dateAdapter={AdapterDayjs}> */}
                 <LayoutTemplate>{children}</LayoutTemplate>
                 <Toaster />
+                {/* </LocalizationProvider> */}
               </ReactQueryProvider>
             </SessionProvider>
           </body>
