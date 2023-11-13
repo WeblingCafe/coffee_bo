@@ -1,12 +1,16 @@
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-
+import dayjs from "dayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
-export default function DatePickerAtom() {
+interface DatePickerAtomProps {
+  onChange: () => void;
+}
+
+export default function DatePickerAtom({ onChange }: DatePickerAtomProps) {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DatePicker />
+      <DatePicker defaultValue={dayjs()} onChange={onChange} />
     </LocalizationProvider>
   );
 }

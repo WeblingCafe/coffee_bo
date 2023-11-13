@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Text from "ui/atoms/Text";
 import Button from "ui/atoms/Button";
+import DatePickerAtom from "ui/atoms/DatePicker";
 
 interface PageTitleOrganismProps extends TitleWrapperProps {
   children: React.ReactNode;
@@ -42,5 +43,17 @@ function TitleButton({ children, handleClick }: TitleButtonProps) {
     </Button>
   );
 }
+
+interface TitleDatePickerProps {
+  onChange: () => void;
+}
+
+function TitleDatePicker({ onChange }: TitleDatePickerProps) {
+  return <DatePickerAtom onChange={onChange} />;
+};
+
+
+
 PageTitleOrganism.Title = Title;
 PageTitleOrganism.TitleButton = TitleButton;
+PageTitleOrganism.TitleDatePicker = TitleDatePicker;
