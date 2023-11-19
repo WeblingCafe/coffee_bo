@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Text from "ui/atoms/Text";
 import Button from "ui/atoms/Button";
 import DatePickerAtom from "ui/atoms/DatePicker";
+import dayjs from "dayjs";
 
 interface PageTitleOrganismProps extends TitleWrapperProps {
   children: React.ReactNode;
@@ -27,8 +28,13 @@ export function PageTitleOrganism({
 }: PageTitleOrganismProps) {
   return <TitleWrapper flexDirection={flexDirection}>{children}</TitleWrapper>;
 }
+
 function Title({ children }: { children: React.ReactNode }) {
-  return <Text fontSize="xxl">{children}</Text>;
+  return (
+    <Text fontSize="xxl" color="black" fontWeight="bold">
+      {children}
+    </Text>
+  );
 }
 
 interface TitleButtonProps {
@@ -45,15 +51,47 @@ function TitleButton({ children, handleClick }: TitleButtonProps) {
 }
 
 interface TitleDatePickerProps {
-  onChange: () => void;
+  onChange: (value: Date) => void;
 }
 
 function TitleDatePicker({ onChange }: TitleDatePickerProps) {
-  return <DatePickerAtom onChange={onChange} />;
-};
+  const [selectedDate, setSelectDate] = useState<Date>();
 
+  const handleChangeDate = (value: Date) => {
+    setSelectDate(value);
 
+    onChange(selectedDate);
+  };
+
+  return (
+    <DatePickerAtom onChange={handleChangeDate} selectedDate={selectedDate} />
+  );
+}
+
+interface TitleDateRangePickerProps {
+  handleStartDateChange: (value: Date) => void;
+  handleEndtDateChange: (value: Date) => void;
+}
+
+const DateRangePickerWrapper = styled.div`
+  display: flex;
+`;
+
+function TitleDateRangePicker({
+  handleStartDateChange,
+  handleEndtDateChange,
+}: TitleDateRangePickerProps) {
+  return (
+    <DateRangePickerWrapper>
+      <div>조회기간</div>
+      <TitleDatePicker onChange={handleStartDateChange} />
+      <div> ~ </div>
+      <TitleDatePicker onChange={handleEndtDateChange} />
+    </DateRangePickerWrapper>
+  );
+}
 
 PageTitleOrganism.Title = Title;
 PageTitleOrganism.TitleButton = TitleButton;
 PageTitleOrganism.TitleDatePicker = TitleDatePicker;
+PageTitleOrganism.TitleDateRangePicker = TitleDateRangePicker;

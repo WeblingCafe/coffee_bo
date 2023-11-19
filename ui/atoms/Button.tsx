@@ -15,7 +15,7 @@ interface ButtonProps extends ButtonStyleProps {
 }
 
 const ButtonWrapper = styled.button<ButtonStyleProps>`
-  width: ${({ width, theme }) => theme.box.width[width] || "100%"};
+  width: ${({ width, theme }) => theme.box.width[width] || "fit-content"};
   height: ${({ height, theme }) => theme.box.height[height] || "100%"};
   font-weight: ${({ fontWeight, theme }) => theme.font.weight[fontWeight]};
   padding: ${({ padding }) => padding && padding};
