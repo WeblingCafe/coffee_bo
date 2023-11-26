@@ -17,6 +17,7 @@ declare module "next-auth" {
         birthDate: string;
         userRole: string;
         stamps: number;
+        accessToken: string;
       };
     };
   }

@@ -26,7 +26,13 @@ const authOptions: AuthOptions = {
             password: credentials?.password,
           }),
         });
-        const user = await res.json();
+
+        const userData = await res.json();
+        const accessToken = await res.headers.get("access-authorization");
+        const user = {
+          ...userData,
+          accessToken,
+        };
 
         // eslint-disable-next-line consistent-return
         return user;
@@ -46,6 +52,7 @@ const authOptions: AuthOptions = {
 
     async session({ session, token }) {
       // eslint-disable-next-line no-param-reassign
+      // session.accessToken = token.accessToken;
       session.user = token;
       return session;
     },

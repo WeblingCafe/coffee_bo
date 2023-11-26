@@ -16,6 +16,7 @@ const LayoutTemplateWrapper = styled.div`
 
 const ChildWrapper = styled.div`
   flex: 1;
+  padding: 32px;
 `;
 
 export default function LayoutTemplate({ children }: LayoutTemplateProps) {
