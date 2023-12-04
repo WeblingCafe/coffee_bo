@@ -39,6 +39,7 @@ declare module "next-auth/jwt" {
       birthDate: string;
       userRole: string;
       stamps: number;
+      accessToken: string;
     };
   }
 }
