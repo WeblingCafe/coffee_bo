@@ -42,7 +42,7 @@ const UserButtonArrow = styled(Image)<{ isOpen: boolean }>`
 
 export default function UserButton({ handleClick, isOpen }: UserTextProps) {
   const { data } = useSession();
-  console.log("data", data);
+  // console.log("data", data);
   const USERNAME = data?.user?.responseObject?.username;
 
   return (
